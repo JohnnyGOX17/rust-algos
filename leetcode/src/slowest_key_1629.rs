@@ -32,7 +32,7 @@ pub fn slowest_key(release_times: Vec<i32>, keys_pressed: String) -> char {
     // NOTE1: can skip first index since longest duration initialized with first index
     // NOTE2: iter() is ok vs into_iter() when you need only borrow not move the values:
     //   https://hermanradtke.com/2015/06/22/effectively-using-iterators-in-rust.html/
-    for (key_time, key) in release_times
+    for (key_time, &key) in release_times
         .into_iter()
         .skip(1)
         .zip(in_bytes.iter().skip(1))
@@ -40,12 +40,12 @@ pub fn slowest_key(release_times: Vec<i32>, keys_pressed: String) -> char {
         let duration = key_time - prev_duration;
         if duration >= longest_duration {
             if duration == longest_duration {
-                if *key > longest_key {
-                    longest_key = *key;
+                if key > longest_key {
+                    longest_key = key;
                 }
             } else {
                 longest_duration = duration;
-                longest_key = *key;
+                longest_key = key;
             }
         }
 

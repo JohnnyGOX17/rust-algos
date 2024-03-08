@@ -12,8 +12,8 @@ pub fn is_valid(s: String) -> bool {
     //  https://doc.rust-lang.org/std/collections/
     let mut paren_stack: Vec<char> = Vec::new();
 
-    for in_byte in in_bytes.iter() {
-        let in_char = *in_byte as char;
+    for &in_byte in in_bytes.iter() {
+        let in_char = in_byte as char;
 
         match in_char {
             // On opening char, push complimentary closing char for easy comparison
