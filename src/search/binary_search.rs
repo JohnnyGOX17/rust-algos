@@ -1,22 +1,23 @@
+//! Binary Search (or half-interval/logarithmic search) is a search algorithm that finds the
+//! position of a target value within a sorted array. It compares the target value to the middle of
+//! the array. If the target value is greater than the middle value, search the middle of the lower
+//! half. If the target value is lesser than the middle value, search the middle of the upper half.
+//! Repeat until the target value is found, or no elements are left! Assumes data is sorted in
+//! ascending order. Matches behavior of [slice primitive's binary_search](https://doc.rust-lang.org/std/primitive.slice.html#method.binary_search) method.
+//!
+//! | Time Complexity | Space Complexity |
+//! | --------------- | ---------------- |
+//! | O(log n)        | O(1)             |
+//!
+//! ![binary_search wikipedia image](https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Binary_Search_Depiction.svg/2560px-Binary_Search_Depiction.svg.png)
+
 use std::cmp::Ordering;
 
-/// Binary Search (or half-interval/logarithmic search) is a search algorithm that finds the
-/// position of a target value within a sorted array. It compares the target value to the middle of
-/// the array. If the target value is greater than the middle value, search the middle of the lower
-/// half. If the target value is lesser than the middle value, search the middle of the upper half.
-/// Repeat until the target value is found, or no elements are left! Assumes data is sorted in
-/// ascending order. Matches behavior of [slice primitive's binary_search](https://doc.rust-lang.org/std/primitive.slice.html#method.binary_search) method.
-///
-/// | Time Complexity | Space Complexity |
-/// | --------------- | ---------------- |
-/// | O(log n)        | O(1)             |
-///
-/// ![binary_search wikipedia image](https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Binary_Search_Depiction.svg/2560px-Binary_Search_Depiction.svg.png)
 pub fn binary_search<T: Ord>(target: &T, arr: &[T]) -> Option<usize> {
     binary_search_recursive(target, arr, &0usize, &arr.len())
 }
 
-///
+/// Recursive implementation of above
 pub fn binary_search_recursive<T: Ord>(
     target: &T,
     arr: &[T],

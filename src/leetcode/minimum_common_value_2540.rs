@@ -1,6 +1,4 @@
-//! # 2540. Minimum Common Value (Easy)
-//!
-//! <https://leetcode.com/problems/minimum-common-value/description/>
+//! # [2540. Minimum Common Value (Easy)](https://leetcode.com/problems/minimum-common-value/description/)
 //!
 //! Given two integer arrays nums1 and nums2, sorted in non-decreasing order, return the minimum
 //! integer common to both arrays. If there is no common integer amongst nums1 and nums2, return -1.
@@ -25,6 +23,7 @@ use std::cmp::Ordering;
 ///  2. When the value pointed to by the second pointer is less than the value pointed to by the
 ///     first pointer, the exact inverse logic of above is also true.
 ///  3. If however both pointed to values are equal, we found a minimum match, so return!
+///
 /// This method also allows for iteration over unequal vector lengths and essentially latches the
 /// final value of the smaller vector when it reaches the end of the array before the other one.
 ///

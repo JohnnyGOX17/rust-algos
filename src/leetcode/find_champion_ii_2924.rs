@@ -1,6 +1,4 @@
-//! # 2924. Find Champion II
-//!
-//! <https://leetcode.com/problems/find-champion-ii/description/>
+//! # [2924. Find Champion II](https://leetcode.com/problems/find-champion-ii/description/)
 
 /// Traverse DAG to find head node
 pub fn find_champion(n: i32, edges: Vec<Vec<i32>>) -> i32 {

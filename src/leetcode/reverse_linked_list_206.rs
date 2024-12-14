@@ -1,6 +1,4 @@
-//! # 206. Reverse Linked List (Easy)
-//!
-//! <https://leetcode.com/problems/reverse-linked-list/description/>
+//! # [206. Reverse Linked List (Easy)](https://leetcode.com/problems/reverse-linked-list/description/)
 //!
 //! Given the `head` of a singly linked list, reverse the list, and return the reversed list.
 //! Example 1:

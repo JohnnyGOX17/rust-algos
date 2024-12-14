@@ -1,6 +1,4 @@
-//! # 1629. Slowest Key (Easy)
-//!
-//! <https://leetcode.com/problems/slowest-key/description/>
+//! # [1629. Slowest Key (Easy)](https://leetcode.com/problems/slowest-key/description/)
 //!
 //! A newly designed keypad was tested, where a tester pressed a sequence of n keys, one at a time.
 //! You are given a string keysPressed of length n, where keysPressed\[i\] was the ith key pressed in
