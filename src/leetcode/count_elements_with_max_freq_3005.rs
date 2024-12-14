@@ -1,12 +1,13 @@
-/// 3005. Count Elements With Maximum Frequency (Easy)
-/// <https://leetcode.com/problems/count-elements-with-maximum-frequency/description/>
-///
-/// You are given an array nums consisting of positive integers. Return the total frequencies of
-/// elements in nums such that those elements all have the maximum frequency. The frequency of an
-/// element is the number of occurrences of that element in the array.
-/// Constraints:
-/// * 1 <= nums.length <= 100
-/// * 1 <= nums[i] <= 100
+//! # 3005. Count Elements With Maximum Frequency (Easy)
+//!
+//! <https://leetcode.com/problems/count-elements-with-maximum-frequency/description/>
+//!
+//! You are given an array nums consisting of positive integers. Return the total frequencies of
+//! elements in nums such that those elements all have the maximum frequency. The frequency of an
+//! element is the number of occurrences of that element in the array.
+//! Constraints:
+//! * `1 <= nums.length <= 100`
+//! * `1 <= nums[i] <= 100`
 use std::collections::HashMap;
 
 /// This method need only pass through the array once (runs in O(N)) and has a small memory

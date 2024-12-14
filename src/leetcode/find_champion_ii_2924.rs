@@ -1,7 +1,8 @@
-// 2924. Find Champion II
-// <https://leetcode.com/problems/find-champion-ii/description/>
-//
+//! # 2924. Find Champion II
+//!
+//! <https://leetcode.com/problems/find-champion-ii/description/>
 
+/// Traverse DAG to find head node
 pub fn find_champion(n: i32, edges: Vec<Vec<i32>>) -> i32 {
     // In the case of the tournament DAG, the winner is essentially the head node (or in the case
     // of no winner, one of the head nodes)- therefore any time we see the end point of an edge, we
