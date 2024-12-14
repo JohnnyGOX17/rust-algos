@@ -1,5 +1,7 @@
 # rust-algos
 
+[![Rust](https://github.com/JohnnyGOX17/rust-algos/actions/workflows/rust.yml/badge.svg)](https://github.com/JohnnyGOX17/rust-algos/actions/workflows/rust.yml)
+
 ## Run tests
 
 `$ cargo test`
