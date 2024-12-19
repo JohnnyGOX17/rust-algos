@@ -8,6 +8,7 @@ pub mod final_array_state_after_k_multiplication_operations_3264;
 pub mod find_champion_ii_2924;
 pub mod max_chunks_to_make_sorted_769;
 pub mod minimum_common_value_2540;
+pub mod palindrone_number_9;
 pub mod reverse_linked_list_206;
 pub mod slowest_key_1629;
 pub mod two_sum_1;
