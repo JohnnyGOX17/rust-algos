@@ -7,6 +7,7 @@ pub mod count_elements_with_max_freq_3005;
 pub mod final_array_state_after_k_multiplication_operations_3264;
 pub mod find_champion_ii_2924;
 pub mod find_median_from_data_stream_295;
+pub mod longest_common_prefix_14;
 pub mod max_chunks_to_make_sorted_769;
 pub mod minimum_common_value_2540;
 pub mod palindrone_number_9;
