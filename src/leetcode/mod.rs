@@ -12,6 +12,7 @@ pub mod max_chunks_to_make_sorted_769;
 pub mod merge_two_sorted_lists_21;
 pub mod minimum_common_value_2540;
 pub mod palindrone_number_9;
+pub mod remove_duplicates_from_sorted_array_26;
 pub mod reverse_linked_list_206;
 pub mod roman_to_integer_13;
 pub mod slowest_key_1629;
