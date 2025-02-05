@@ -1,6 +1,7 @@
 //! # leetcode
 //!
 //! LeetCode scratch-space and solutions in Rust
+pub mod add_two_numbers_2;
 pub mod check_if_one_string_swap_can_make_strings_equal_1790;
 pub mod construct_string_with_repeat_limit_2182;
 pub mod continuous_subarrays_2762;
