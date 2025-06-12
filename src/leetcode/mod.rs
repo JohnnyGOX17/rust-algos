@@ -13,6 +13,7 @@ pub mod letter_tile_possibilities_1079;
 pub mod longest_common_prefix_14;
 pub mod longest_strictly_increasing_or_decreasing_subarray_3105;
 pub mod max_chunks_to_make_sorted_769;
+pub mod maximum_difference_between_even_and_odd_frequency_i_3442;
 pub mod merge_two_sorted_lists_21;
 pub mod minimum_common_value_2540;
 pub mod palindrone_number_9;
