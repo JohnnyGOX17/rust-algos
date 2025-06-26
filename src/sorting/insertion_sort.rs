@@ -1,31 +1,30 @@
 //! # Insertion Sort
+//!
+//! ![img](https://upload.wikimedia.org/wikipedia/commons/4/42/Insertion_sort.gif)
+//!
+//! Sorts a mutable slice in-place:
+//! - Time complexity is $O(n^{2})$
+//! - Space complexity is $O(1)$ (sorts in-place)
+use crate::sorting::sorter::Sorter;
 
-/// Sorts a mutable slice in-place:
-/// - Time complexity is $O(n^{2})$
-/// - Space complexity is $O(1)$ (sorts in-place)
-pub fn insertion_sort<T: Ord + Copy>(arr: &mut [T]) {
-    for i in 1..arr.len() {
-        let mut j = i;
-        let cur = arr[i];
+pub struct InsertionSort;
 
-        while j > 0 && cur < arr[j - 1] {
-            arr[j] = arr[j - 1];
-            j -= 1;
-        }
-
-        arr[j] = cur;
+impl<T: Ord + Copy> Sorter<T> for InsertionSort {
+    fn name(&self) -> &'static str {
+        "InsertionSort"
     }
-}
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+    fn sort(&self, arr: &mut [T]) {
+        for i in 1..arr.len() {
+            let mut j = i;
+            let cur = arr[i];
 
-    #[test]
-    fn test_1() {
-        let mut arr: Vec<&str> = vec!["d", "a", "c", "e", "b"];
-        let expected: Vec<&str> = vec!["a", "b", "c", "d", "e"];
-        insertion_sort(&mut arr);
-        assert_eq!(arr, expected);
+            while j > 0 && cur < arr[j - 1] {
+                arr[j] = arr[j - 1];
+                j -= 1;
+            }
+
+            arr[j] = cur;
+        }
     }
 }

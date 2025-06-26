@@ -1,6 +1,6 @@
 //! # [1079. Letter Tile Possibilities (Medium)](https://leetcode.com/problems/letter-tile-possibilities/description/)
 //!
-//! You have n  tiles, where each tile has one letter tiles[i] printed on it.
+//! You have n  tiles, where each tile has one letter `tiles[i]` printed on it.
 //! Return the number of possible non-empty sequences of letters you can make using the letters printed on those tiles.
 
 fn find_seq(char_count: &mut [u32]) -> i32 {
