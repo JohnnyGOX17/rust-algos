@@ -2,7 +2,12 @@
 //!
 //! ![img](https://upload.wikimedia.org/wikipedia/commons/4/42/Insertion_sort.gif)
 //!
-//! Sorts a mutable slice in-place:
+//! Sorts a mutable slice in-place by:
+//! - At each increasing index, exchanging the entries that are smaller to the left.
+//! - As the entries to the left are sorted at each iteration, the array is fully sorted once the
+//!   index reaches the right end.
+//!
+//! Performance:
 //! - Time complexity is $O(n^{2})$
 //! - Space complexity is $O(1)$ (sorts in-place)
 use crate::sorting::sorter::Sorter;

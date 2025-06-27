@@ -1,13 +1,17 @@
 //! # Integration tests for Sorting Algorithms
 
-use rust_algos::sorting::{insertion_sort, sorter::Sorter};
+use rust_algos::sorting::{insertion_sort, selection_sort, sorter::Sorter};
 
 fn get_all_sorters() -> Vec<Box<dyn Sorter<i32>>> {
-    vec![Box::new(insertion_sort::InsertionSort)]
+    vec![
+        Box::new(insertion_sort::InsertionSort),
+        Box::new(selection_sort::SelectionSort),
+    ]
 }
 
 #[test]
 fn test_sorting_algos() {
+    println!("hello");
     let inputs = vec![
         vec![3, 1, 4, 2],
         vec![5],
@@ -16,7 +20,7 @@ fn test_sorting_algos() {
         vec![9, 7, 5, 3, 1],
     ];
 
-    for mut input in inputs {
+    for input in inputs {
         let expected = {
             let mut cloned = input.clone();
             cloned.sort(); // use standard sorting algo
@@ -24,8 +28,14 @@ fn test_sorting_algos() {
         };
 
         for sort_algo in get_all_sorters() {
-            sort_algo.sort(&mut input);
-            assert_eq!(input, expected, "Failed on sorter: {}", sort_algo.name());
+            let mut test_input = input.clone();
+            sort_algo.sort(&mut test_input);
+            assert_eq!(
+                test_input,
+                expected,
+                "Failed on sorter: {}",
+                sort_algo.name()
+            );
         }
     }
 }
