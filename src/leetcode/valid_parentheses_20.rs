@@ -5,6 +5,8 @@
 //!  1. Open brackets must be closed by the same type of brackets.
 //!  2. Open brackets must be closed in the correct order.
 //!  3. Every close bracket has a corresponding open bracket of the same type.
+
+/// Canonical example using simple `Vec` as a LIFO stack to check for balance
 pub fn is_valid(s: String) -> bool {
     let in_bytes = s.as_bytes();
     // Use a basic Vec when wanting a basic stack:
@@ -32,22 +34,87 @@ pub fn is_valid(s: String) -> bool {
     paren_stack.is_empty()
 }
 
+/// Alternative ultra-low/fixed memory version for very constrained/embedded systems by using a
+/// fixed size array, instead of `Vec`, to avoid heap allocation (`#![no_std]` friendly).
+pub fn is_valid_minimal(s: &str) -> bool {
+    const MAX_DEPTH: usize = 32;
+    let mut stack: [u8; MAX_DEPTH] = [0; MAX_DEPTH];
+    let mut stack_ptr: usize = 0;
+
+    for byte in s.bytes() {
+        match byte {
+            b'(' | b'{' | b'[' => {
+                if stack_ptr >= MAX_DEPTH {
+                    // we've hit the maximum paren depth, we have to fail here to not have stack
+                    // overflow
+                    return false;
+                }
+                stack[stack_ptr] = byte;
+                stack_ptr += 1;
+            }
+            b')' => {
+                if stack_ptr == 0 || stack[stack_ptr - 1] != b'(' {
+                    return false;
+                }
+                stack_ptr -= 1;
+            }
+            b'}' => {
+                if stack_ptr == 0 || stack[stack_ptr - 1] != b'{' {
+                    return false;
+                }
+                stack_ptr -= 1;
+            }
+            b']' => {
+                if stack_ptr == 0 || stack[stack_ptr - 1] != b'[' {
+                    return false;
+                }
+                stack_ptr -= 1;
+            }
+            // Change this to ignore other characters if input string is expected to have more than
+            // parentheses in it.
+            _ => return false,
+        }
+    }
+
+    stack_ptr == 0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn case_1() {
+    fn test_valid_cases() {
         assert!(is_valid("()".to_string()));
-    }
-
-    #[test]
-    fn case_2() {
         assert!(is_valid("()[]{}".to_string()));
+        assert!(is_valid("{[]}".to_string()));
+        assert!(is_valid("((()))".to_string()));
+
+        assert!(is_valid_minimal("()"));
+        assert!(is_valid_minimal("()[]{}"));
+        assert!(is_valid_minimal("{[]}"));
+        assert!(is_valid_minimal("((()))"));
     }
 
     #[test]
-    fn case_3() {
+    fn test_invalid_cases() {
         assert!(!is_valid("(]".to_string()));
+        assert!(!is_valid("([)]".to_string())); // interleaved case
+        assert!(!is_valid("((".to_string()));
+        assert!(!is_valid("())".to_string()));
+
+        assert!(!is_valid_minimal("(]"));
+        assert!(!is_valid_minimal("([)]")); // interleaved case
+        assert!(!is_valid_minimal("(("));
+        assert!(!is_valid_minimal("())"));
+    }
+
+    #[test]
+    fn test_edge_cases() {
+        assert!(is_valid("".to_string()));
+        assert!(!is_valid("a".to_string()));
+
+        assert!(is_valid_minimal(""));
+        assert!(!is_valid_minimal("a"));
     }
 }
